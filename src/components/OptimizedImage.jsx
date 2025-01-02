@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { getLazyImageProps } from '../utils/imageOptimizer';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { getLazyImageProps } from "../utils/imageOptimizer";
 
-const OptimizedImage = ({ 
-  src, 
-  alt, 
-  className = '', 
-  sizes = '100vw',
-  priority = false 
+const OptimizedImage = ({
+  src,
+  alt,
+  className = "",
+  sizes = "100vw",
+  priority = false,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -25,7 +25,9 @@ const OptimizedImage = ({
 
   if (error) {
     return (
-      <div className={`bg-gray-100 flex items-center justify-center ${className}`}>
+      <div
+        className={`bg-gray-100 flex items-center justify-center ${className}`}
+      >
         <span className="text-gray-400">Failed to load image</span>
       </div>
     );
@@ -42,10 +44,10 @@ const OptimizedImage = ({
           />
         )}
       </AnimatePresence>
-      
+
       <motion.img
         {...imageProps}
-        loading={priority ? 'eager' : 'lazy'}
+        loading={priority ? "eager" : "lazy"}
         onLoad={() => setIsLoaded(true)}
         onError={() => setError(true)}
         initial={{ opacity: 0 }}
